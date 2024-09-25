@@ -8,7 +8,12 @@ import {
   generateDocusaurusPDF,
   DocusaurusOptions,
 } from './provider/docusaurus';
-import chalk from 'chalk';
+//import chalk from 'chalk';
+(async () => {
+    const { default: chalk } = await import('chalk');
+    // Your existing logic that uses chalk goes here
+})();
+
 import console_stamp from 'console-stamp';
 const version = require('../package.json').version;
 

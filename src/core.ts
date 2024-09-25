@@ -1,7 +1,16 @@
-import chalk from 'chalk';
+//import chalk from 'chalk';
+(async () => {
+    const { default: chalk } = await import('chalk');
+    // Your existing logic that uses chalk goes here
+})();
+
 import console_stamp from 'console-stamp';
 import * as puppeteer from 'puppeteer-core';
-import { scrollPageToBottom } from 'puppeteer-autoscroll-down';
+(async () => {
+    const { scrollPageToBottom } = await import('puppeteer-autoscroll-down');
+    // Your existing logic that uses scrollPageToBottom goes here
+})();
+
 import * as fs from 'fs-extra';
 import { chromeExecPath } from './browser';
 import * as utils from './utils';
@@ -65,13 +74,13 @@ export async function generatePDF({
 }: GeneratePDFOptions): Promise<void> {
   const execPath = process.env.PUPPETEER_EXECUTABLE_PATH ?? chromeExecPath();
   console.debug(chalk.cyan(`Using Chromium from ${execPath}`));
-  const browser = await puppeteer.launch({
+  /*const browser = await puppeteer.launch({
     headless: 'new',
     executablePath: execPath,
     args: puppeteerArgs,
     protocolTimeout: protocolTimeout,
-  });
-
+  }); */
+  const browser = await puppeteer.launch();
   const chromeTmpDataDir = browser
     .process()
     ?.spawnargs.find((arg) => arg.startsWith('--user-data-dir'))

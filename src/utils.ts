@@ -1,4 +1,5 @@
-import chalk from 'chalk';
+//import chalk from 'chalk';
+const {chalk} = require('chalk');
 import console_stamp from 'console-stamp';
 import * as puppeteer from 'puppeteer-core';
 
